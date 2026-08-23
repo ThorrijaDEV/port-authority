@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "port-authority"
+version = "0.1.0"
+description = "A historian for Linux network ports: who listened where, when, for how long."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "ThorrijaDEV" }]
+requires-python = ">=3.9"
+dependencies = ["psutil>=5.9"]
+keywords = ["linux", "networking", "ports", "security", "monitoring", "cli"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Networking :: Monitoring",
+    "Topic :: Security",
+]
+
+[project.scripts]
+port-authority = "port_authority.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ThorrijaDEV/port-authority"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/port_authority"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
